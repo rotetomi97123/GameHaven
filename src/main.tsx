@@ -7,7 +7,11 @@ import "./index.css";
 const theme = extendTheme({
   colors: {
     darkGray: "#1A1A1A",
-    // Egyéb egyedi színek...
+    primaryColor: "#009688",
+  },
+  fonts: {
+    heading: `'Caveat', sans-serif`,
+    body: `'Caveat', sans-serif`,
   },
 });
 
