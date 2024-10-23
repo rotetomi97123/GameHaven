@@ -29,6 +29,8 @@ const Navbar: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [categories, setCategories] = useState<Category[]>([]);
+  const [cards, setCards] = useState<Category[]>([]);
+
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [isShowSearch, setIsShowSearch] = useState<boolean>(false);
@@ -41,7 +43,10 @@ const Navbar: React.FC = () => {
         ); // Replace with your actual URL
         const data = await response.json();
 
-        // Check if the response contains categories
+        if (data.cards) {
+          setCards(data.cards);
+        }
+
         if (data.categories) {
           setCategories(data.categories);
         } else {
@@ -66,7 +71,7 @@ const Navbar: React.FC = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-
+  console.log(cards);
   return (
     <>
       <Box bg="#2A2A2A">

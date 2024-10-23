@@ -8,3 +8,10 @@
     margin: 0 !important;
   }
 }
+.hero_slider {
+  display: flex;
+  justify-content: center;
+  img {
+    width: 100%;
+  }
+}
