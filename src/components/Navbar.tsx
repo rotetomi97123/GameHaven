@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  console.log(cards);
+
   return (
     <>
       <Box bg="#2A2A2A">
@@ -128,10 +128,10 @@ const Navbar: React.FC = () => {
                       variant="outline"
                       colorScheme="primaryColor"
                       size={{ base: "sm", md: "md" }}
-                      bg="transparent" // Set background color
-                      color="white" // Set icon color
-                      _hover={{ color: "primaryColor" }} // Change background on hover
-                      _active={{ color: "primaryColor" }} // Change background on active
+                      bg="transparent"
+                      color="white"
+                      _hover={{ color: "primaryColor" }}
+                      _active={{ color: "primaryColor" }}
                       padding={{ base: "0", md: "2" }}
                       onClick={() => setIsShowSearch((prev) => !prev)}
                     />
@@ -153,10 +153,10 @@ const Navbar: React.FC = () => {
                       variant="outline"
                       colorScheme="primaryColor"
                       size={{ base: "sm", md: "md" }}
-                      bg="transparent" // Set background color
-                      color="white" // Set icon color
-                      _hover={{ color: "primaryColor" }} // Change background on hover
-                      _active={{ color: "primaryColor" }} // Change background on active
+                      bg="transparent"
+                      color="white"
+                      _hover={{ color: "primaryColor" }}
+                      _active={{ color: "primaryColor" }}
                       padding={{ base: "0", md: "2" }}
                     />
                   </Tooltip>{" "}
@@ -169,16 +169,16 @@ const Navbar: React.FC = () => {
                 >
                   <Tooltip aria-label="Sign In Tooltip">
                     <Button
-                      leftIcon={<AiOutlineLogin />} // Add the icon to the left of the text
+                      leftIcon={<AiOutlineLogin />}
                       variant="outline"
-                      colorScheme="blue" // Change color scheme as needed
+                      colorScheme="blue"
                       size={{ base: "sm", md: "md" }}
-                      bg="transparent" // Set background color
-                      color="white" // Set text color
+                      bg="transparent"
+                      color="white"
                       border={{ base: "1px solid white ", md: "none" }}
                       padding={{ base: "0", md: "2" }}
-                      _hover={{ color: "primaryColor" }} // Change background on hover
-                      _active={{ color: "primaryColor" }} // Change background on active
+                      _hover={{ color: "primaryColor" }}
+                      _active={{ color: "primaryColor" }}
                       fontSize="xl"
                     >
                       <Text display={{ base: "none", md: "flex" }}>
@@ -195,15 +195,15 @@ const Navbar: React.FC = () => {
                 >
                   <Tooltip aria-label="Sign In Tooltip">
                     <Button
-                      leftIcon={<AiOutlineShoppingCart />} // Add the icon to the left of the text
+                      leftIcon={<AiOutlineShoppingCart />}
                       variant="outline"
-                      colorScheme="blue" // Change color scheme as needed
+                      colorScheme="blue"
                       size={{ base: "sm", md: "md" }}
-                      bg="transparent" // Set background color
-                      color="white" // Set text color
+                      bg="transparent"
+                      color="white"
                       border={{ base: "1px solid white ", md: "none" }}
                       _hover={{ color: "primaryColor" }}
-                      _active={{ color: "primaryColor" }} // Change background on active
+                      _active={{ color: "primaryColor" }}
                       fontSize="xl"
                       padding={{ base: "0", md: "2" }}
                     >
@@ -298,7 +298,7 @@ const Navbar: React.FC = () => {
         <List
           display="flex"
           justifyContent="center"
-          fontSize="lg"
+          fontSize="md"
           textTransform="uppercase"
           py="2"
         >
@@ -320,7 +320,7 @@ const Navbar: React.FC = () => {
         bg="primaryColor"
         py="2"
         textTransform="uppercase"
-        fontSize={{ base: "sm", md: "lg" }}
+        fontSize={{ base: "sm", md: "md" }}
         display={{ base: "block", md: "flex" }}
         justifyContent="center"
       >
