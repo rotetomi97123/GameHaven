@@ -12,7 +12,7 @@ const App: React.FC = () => {
       <Hero />
       <SaleSection />
       <GameList />
-      <Box height="100vh" bg="darkGray"></Box>
+      <Box height="10vh" bg="darkGray"></Box>
     </Box>
   );
 };

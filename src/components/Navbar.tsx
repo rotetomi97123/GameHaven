@@ -15,10 +15,11 @@ import {
   Button,
   Tooltip,
   Text,
-} from "@chakra-ui/react"; // Optimalizált import
+} from "@chakra-ui/react";
 import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
-import { HiHeart } from "react-icons/hi"; // Importing the heart icon
-import { AiOutlineLogin, AiOutlineShoppingCart } from "react-icons/ai"; // Importing the sign-in icon
+import { HiHeart } from "react-icons/hi";
+import { AiOutlineLogin, AiOutlineShoppingCart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 interface Category {
   id: number;
@@ -78,11 +79,13 @@ const Navbar: React.FC = () => {
         <Box maxWidth="1080px" margin="0 auto">
           <Flex direction="row" justify="space-between" align="center" px={4}>
             <Box p={2}>
-              <Image
-                height={{ base: "75px", md: "100px" }}
-                src="https://i.ibb.co/XzSb1YT/1-removebg-preview.png"
-                alt="Logo"
-              />
+              <Link to="/">
+                <Image
+                  height={{ base: "75px", md: "100px" }}
+                  src="https://i.ibb.co/XzSb1YT/1-removebg-preview.png"
+                  alt="Logo"
+                />
+              </Link>
             </Box>
             <Flex display={{ base: "none", lg: "flex" }}>
               <Input
@@ -229,19 +232,26 @@ const Navbar: React.FC = () => {
                       />
                       <MenuList mx={5} bg="darkGray" maxW="200px">
                         {categories.map((category) => (
-                          <MenuItem
-                            key={category.id}
-                            px={4}
-                            cursor="pointer"
-                            _hover={{
-                              color: "primaryColor",
-                              transition: "0.1s",
-                            }}
-                            bg="darkGray"
-                            color="white"
+                          <Link
+                            to={`/category/${category.category_name
+                              .replace(/\s+/g, "-")
+                              .toLowerCase()
+                              .replace(/-+$/, "")}`}
                           >
-                            {category.category_name}
-                          </MenuItem>
+                            <MenuItem
+                              key={category.id}
+                              px={4}
+                              cursor="pointer"
+                              _hover={{
+                                color: "primaryColor",
+                                transition: "0.1s",
+                              }}
+                              bg="darkGray"
+                              color="white"
+                            >
+                              {category.category_name}
+                            </MenuItem>
+                          </Link>
                         ))}
                       </MenuList>
                     </Menu>
@@ -303,14 +313,22 @@ const Navbar: React.FC = () => {
           py="2"
         >
           {categories.map((category) => (
-            <ListItem
-              key={category.id}
-              px={4}
-              cursor="pointer"
-              _hover={{ color: "primaryColor", transition: "0.1s" }}
+            <Link
+              to={`/category/${category.category_name
+                .replace(/\s+/g, "-")
+                .toLowerCase()
+                .replace(/-+$/, "")}`}
             >
-              {category.category_name}
-            </ListItem>
+              {" "}
+              <ListItem
+                key={category.id}
+                px={4}
+                cursor="pointer"
+                _hover={{ color: "primaryColor", transition: "0.1s" }}
+              >
+                {category.category_name}
+              </ListItem>
+            </Link>
           ))}
         </List>
       </Box>
