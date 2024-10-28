@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/hero";
 import SaleSection from "../components/saleSection";
 import GameList from "../components/Gamelist";
+import Footer from "../components/Footer";
 
 const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const App: React.FC = () => {
       <Hero />
       <SaleSection />
       <GameList />
+      <Footer />
       <Box height="10vh" bg="darkGray"></Box>
     </Box>
   );

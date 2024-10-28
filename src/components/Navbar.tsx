@@ -20,6 +20,7 @@ import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
 import { HiHeart } from "react-icons/hi";
 import { AiOutlineLogin, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 
 interface Category {
   id: number;
@@ -35,6 +36,7 @@ const Navbar: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [isShowSearch, setIsShowSearch] = useState<boolean>(false);
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -64,7 +66,6 @@ const Navbar: React.FC = () => {
 
     fetchCategories();
   }, []);
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -185,7 +186,7 @@ const Navbar: React.FC = () => {
                       fontSize="xl"
                     >
                       <Text display={{ base: "none", md: "flex" }}>
-                        SIGN IN
+                        {isLoggedIn ? "LOGGED IN" : "SIGN IN"}
                       </Text>
                     </Button>
                   </Tooltip>
