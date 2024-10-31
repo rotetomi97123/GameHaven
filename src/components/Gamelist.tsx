@@ -7,6 +7,8 @@ import {
   Flex,
   Button,
   Tooltip,
+  GridItem,
+  Grid,
 } from "@chakra-ui/react";
 import { AiOutlineShoppingCart, AiOutlineClockCircle } from "react-icons/ai";
 import { GiTrophy, GiDiceTwentyFacesOne } from "react-icons/gi";
@@ -72,7 +74,7 @@ const GameList: React.FC = () => {
   return (
     <Box mt={{ base: 10, lg: 0 }}>
       <Flex
-        bg="grayColor"
+        bg="gray.800"
         color="white"
         maxWidth="1024px"
         m="0 auto"
@@ -254,8 +256,113 @@ const GameList: React.FC = () => {
           />
         </Flex>
       </Flex>
-
-      <SimpleGrid
+      {/* {filteredGames?.map((game) => ( */}
+      <Box maxW="1024px" margin="50px auto">
+        <Grid
+          templateColumns="repeat(auto-fill, minmax(170px, 1fr))"
+          gap={4}
+          px={{ base: 4, xl: 2 }}
+        >
+          {filteredGames &&
+            filteredGames?.map((item, index) => (
+              <GridItem
+                key={index}
+                bg="gray.800"
+                borderRadius="lg"
+                overflow="hidden"
+                boxShadow="lg"
+                transition="0.3s"
+                display="flex"
+                flexDirection="column"
+                _hover={{ transform: "scale(1.05)", boxShadow: "xl" }}
+              >
+                <Link
+                  to={`/product/${item.name
+                    .replace(/\s+/g, "-")
+                    .toLowerCase()
+                    .replace(/-+$/, "")}`}
+                  state={{ item }}
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    objectFit="cover"
+                    w="100%"
+                    h="200px"
+                    borderBottom="4px solid teal.300"
+                    cursor="pointer"
+                  />
+                </Link>
+                <Box
+                  p={5}
+                  display="flex"
+                  flexDirection="column"
+                  flexGrow={1}
+                  justifyContent="space-between"
+                >
+                  <Text fontSize="xl" fontWeight="bold" color="white" mb={2}>
+                    {item.name}
+                  </Text>
+                  <Flex gap={1}>
+                    <Text fontSize="lg" fontWeight="semibold" color="white">
+                      ${parseFloat(item.price).toFixed(2)}
+                    </Text>
+                    <Text
+                      fontSize="sm"
+                      fontWeight="semibold"
+                      color="gray.500"
+                      textDecor="line-through"
+                    >
+                      ${(parseFloat(item.price) + 10).toFixed(2)}
+                    </Text>
+                  </Flex>
+                  <Box>
+                    <Tooltip aria-label="Add to Cart Tooltip">
+                      <Button
+                        leftIcon={<AiOutlineShoppingCart />}
+                        variant="solid"
+                        colorScheme="teal"
+                        size={{ base: "sm", md: "md" }}
+                        bg="teal.400"
+                        color="white"
+                        _hover={{
+                          backgroundColor: "teal.300",
+                          boxShadow: "md",
+                        }}
+                        transition="background-color 0.3s, box-shadow 0.3s"
+                        fontSize="lg"
+                        width="100%"
+                        mb={2} // Space between the two buttons
+                      >
+                        ADD TO CART
+                      </Button>
+                    </Tooltip>
+                    <Tooltip aria-label="Stock Status Tooltip">
+                      <Button
+                        variant="outline"
+                        colorScheme="teal"
+                        size={{ base: "sm", md: "md" }}
+                        bg="gray.600"
+                        color="white"
+                        _hover={{
+                          backgroundColor: "rgba(255, 255, 255, 0.1)",
+                          borderColor: "teal.300",
+                        }}
+                        transition="background-color 0.3s, border-color 0.3s"
+                        fontSize="lg"
+                        cursor="default"
+                        width="100%"
+                      >
+                        3+ IN STOCK
+                      </Button>
+                    </Tooltip>
+                  </Box>
+                </Box>
+              </GridItem>
+            ))}
+        </Grid>
+      </Box>
+      {/* <SimpleGrid
         columns={{ base: 2, md: 3, lg: 5 }}
         spacing={5}
         p={{ base: 2, md: 5 }}
@@ -280,12 +387,6 @@ const GameList: React.FC = () => {
                 .replace(/-+$/, "")}`}
               state={{ game }}
             >
-              {/* <Link
-              to={`/product/${category.category_name
-                .replace(/\s+/g, "-")
-                .toLowerCase()
-                .replace(/-+$/, "")}`}
-            ></Link> */}
               <Image
                 width="100%"
                 height="170px" // Increased height
@@ -360,7 +461,7 @@ const GameList: React.FC = () => {
             </Flex>
           </Box>
         ))}
-      </SimpleGrid>
+      </SimpleGrid> */}
     </Box>
   );
 };

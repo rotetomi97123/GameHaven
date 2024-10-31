@@ -99,7 +99,7 @@ const App: React.FC = () => {
       <Flex
         width="100%"
         justify="center"
-        bg="grayColor"
+        bg="gray.800"
         gap={{ base: "0", md: "40px" }}
         flexDirection={{ base: "column", md: "row" }}
       >

@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [categories, setCategories] = useState<Category[]>([]);
-  const [cards, setCards] = useState<Category[]>([]);
+  const [data, setData] = useState<any>([]);
 
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
         const data = await response.json();
 
         if (data.cards) {
-          setCards(data.cards);
+          setData(data);
         }
 
         if (data.categories) {
@@ -66,6 +66,7 @@ const Navbar: React.FC = () => {
 
     fetchCategories();
   }, []);
+  // console.log(data);
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -78,12 +79,17 @@ const Navbar: React.FC = () => {
     <>
       <Box bg="#2A2A2A">
         <Box maxWidth="1080px" margin="0 auto">
-          <Flex direction="row" justify="space-between" align="center" px={4}>
+          <Flex
+            direction={{ base: "column", sm: "row" }}
+            justify="space-between"
+            align="center"
+            px={4}
+          >
             <Box p={2}>
               <Link to="/">
                 <Image
-                  height={{ base: "75px", md: "100px" }}
-                  src="https://i.ibb.co/XzSb1YT/1-removebg-preview.png"
+                  height={{ base: "75px", md: "110px" }}
+                  src="https://i.ibb.co/pKSPGQw/Untitled-design-removebg-preview.png"
                   alt="Logo"
                 />
               </Link>
@@ -116,7 +122,7 @@ const Navbar: React.FC = () => {
                 <SearchIcon boxSize={6} color="white" />
               </Button>
             </Flex>
-            <Box color="primaryColor">
+            <Box color="primaryColor" pb={{ base: 4, sm: 0 }}>
               <List display="flex" fontSize="xl" textTransform="uppercase">
                 <ListItem
                   mx={{ base: "1", md: "2" }}
@@ -267,7 +273,7 @@ const Navbar: React.FC = () => {
         <Box>
           <Flex
             display={{ base: "flex", lg: "none" }}
-            py={2}
+            py={4}
             px={5}
             justify="center"
           >
@@ -319,6 +325,16 @@ const Navbar: React.FC = () => {
                 .replace(/\s+/g, "-")
                 .toLowerCase()
                 .replace(/-+$/, "")}`}
+              state={{
+                category:
+                  category.category_name === "Board games"
+                    ? "Board games"
+                    : category.category_name === "Trading cards"
+                    ? "Trading cards"
+                    : category.category_name === "Puzzles"
+                    ? "Puzzles"
+                    : "Other",
+              }}
             >
               {" "}
               <ListItem
@@ -343,7 +359,9 @@ const Navbar: React.FC = () => {
         display={{ base: "block", md: "flex" }}
         justifyContent="center"
       >
-        <Text>Buy 3, get 3% off - use code HAVEN3 , </Text>
+        <Text display={{ base: "none", sm: "block" }}>
+          Buy 3, get 3% off - use code HAVEN3 ,{" "}
+        </Text>
         <Text> Buy 5 get 5% off - use code HAVEN5</Text>
       </Box>
     </>

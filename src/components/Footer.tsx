@@ -107,7 +107,7 @@ const Footer = () => {
           />
         </Box>
         <Text fontSize="sm" mt={4} textAlign="center" color="gray.400">
-          © 2024 Your Board Game Website. All rights reserved.
+          © 2024 Game haven. All rights reserved.
         </Text>
       </Stack>
     </Box>

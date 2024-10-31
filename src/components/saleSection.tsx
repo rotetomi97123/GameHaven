@@ -19,7 +19,7 @@ const SaleSection: React.FC = () => {
           overflow="hidden"
           boxShadow="lg"
           width={{ base: "95%", md: "500px" }}
-          bg="grayColor"
+          bg="gray.800"
         >
           <Image
             src={img1}
@@ -61,7 +61,7 @@ const SaleSection: React.FC = () => {
           overflow="hidden"
           boxShadow="lg"
           width={{ base: "95%", md: "500px" }}
-          bg="grayColor"
+          bg="gray.800"
         >
           <Image
             src={img2}

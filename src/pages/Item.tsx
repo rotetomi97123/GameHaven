@@ -21,13 +21,18 @@ import { useLocation } from "react-router-dom";
 
 const Item: React.FC = () => {
   const { isOpen, onToggle } = useDisclosure();
-  const item = useLocation().state.game;
+  const item = useLocation().state.item;
 
   return (
     <Box bg="#1A1A1A" color="white" fontFamily="heading" minHeight="100vh">
       <Navbar />
       <Box maxWidth="800px" mx="auto" p={6}>
-        <HStack spacing={6} mt={8} align="flex-start">
+        <Flex
+          gap={6}
+          mt={8}
+          align="flex-start"
+          direction={{ base: "column", sm: "row" }}
+        >
           <Box
             position="relative"
             _hover={{ transform: "scale(1.05)", transition: "transform 0.3s" }}
@@ -36,7 +41,7 @@ const Item: React.FC = () => {
               src={item.image}
               alt={item.name}
               borderRadius="md"
-              boxSize="300px"
+              boxSize="270px"
             />
           </Box>
           <Stack spacing={4} flex="1">
@@ -75,7 +80,8 @@ const Item: React.FC = () => {
             <Button
               colorScheme="teal"
               mt={4}
-              isDisabled={item.stock <= 0} // Disable button if out of stock
+              isDisabled={item.stock <= 0}
+              maxW="200px"
             >
               Add to Cart
             </Button>
@@ -99,7 +105,7 @@ const Item: React.FC = () => {
               </AccordionItem>
             </Accordion>
           </Stack>
-        </HStack>
+        </Flex>
       </Box>
     </Box>
   );
